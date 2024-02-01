@@ -36,7 +36,7 @@ of all given parameters. This does not work always, especially if the
 parameters are array-like types (e.g. numpy.ndarray).
 '''
 
-from collections import Iterable
+from collections.abc import Iterable
 from numbers import Number
 from types import MethodType, FunctionType
 
@@ -728,7 +728,7 @@ class SmithAxes(Axes):
                     pass
 
             # if (converted) arg is an ndarray of complex type, split it
-            if isinstance(arg, np.ndarray) and arg.dtype in [np.complex, np.complex128]:
+            if isinstance(arg, np.ndarray) and arg.dtype in [np.complex64, np.complex128]:
                 new_args += z_to_xy(arg)
             else:
                 new_args += (arg,)
